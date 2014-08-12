@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/environment'
+Environment.environment = ENV["DB"] || "development"
+
+require_relative 'lib/router'
+
+def clean_gets
+  (gets || "").chomp
+end
+
+
+puts IO.readlines('restaurant.txt')
+# puts "\n\nAdd a restaurant to be reviewed with (add) or view all restaurants that have been reviewed"
+
+#
+restaurant_controller = RestaurantsController.new()
+restaurant_controller.menu
